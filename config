@@ -1,0 +1,42 @@
+//configured to run at address 0x00040004
+
+=> loads
+## Ready for S-Record download ...
+~>examples/hello_world.srec
+1 2 3 4 5 6 7 8 9 10 11 ...
+[file transfer complete]
+[connected]
+## Start Addr = 0x00040004
+=> go 40004 Hello World! This is a test.
+## Starting application at 0x00040004 ...
+Hello World
+argc = 7
+argv[0] = "40004"
+argv[1] = "Hello"
+argv[2] = "World!"
+argv[3] = "This"
+argv[4] = "is"
+argv[5] = "a"
+argv[6] = "test."
+argv[7] = ""
+Hit any key to exit ...
+## Application terminated, rc = 0x0
+
+//TFTP to download the image over the network. 
+//Binary image (hello_world.bin) is used
+//Entry point of program is at offset 0x0004 from the start of file
+
+=> tftp 40000 /tftpboot/hello_world.bin...
+=> go 40004 This is another test.
+## Starting application at 0x00040004 ...
+Hello World
+argc = 5
+argv[0] = "40004"
+argv[1] = "This"
+argv[2] = "is"
+argv[3] = "another"
+argv[4] = "test."
+argv[5] = ""
+Hit any key to exit ...
+## Application terminated, rc = 0x0
+
