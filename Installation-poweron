@@ -1,0 +1,116 @@
+setenv u-boot /tftpboot/duts/canyonlands/u-boot.bin
+=> run load update
+
+Using ppc_4xx_eth0 device
+
+TFTP from server 192.168.1.1; our IP address is 192.168.100.6
+Filename '/tftpboot/duts/canyonlands/u-boot.bin'.
+Load address: 0x200000
+Loading: ###########################
+done
+Bytes transferred = 393216 (60000 hex)
+Un-Protected 3 sectors
+... done
+Erased 3 sectors
+Copy to Flash... done
+Saving Environment to Flash...
+Un-Protected 1 sectors
+Un-Protected 1 sectors
+Erasing Flash...
+. done
+Erased 1 sectors
+Writing to Flash... done
+Protected 1 sectors
+Protected 1 sectors
+=> reset
+U-Boot 2009.11.1 (Feb 05 2010 - 08:57:12)
+CPU: AMCC PowerPC 460EX Rev. B at 1066.667 MHz (PLB=266 OPB=88 EBC=88)
+Security/Kasumi support
+Bootstrap Option H - Boot ROM Location I2C (Addr 0x52)
+Internal PCI arbiter enabled
+32 kB I-Cache 32 kB D-Cache
+Board: Canyonlands - AMCC PPC460EX Evaluation Board, 1*PCIe/1*SATA, Rev. 16
+I2C: ready
+DRAM: 512 MB (ECC not enabled, 533 MHz, CL4)
+FLASH: 64 MB
+NAND: 128 MiB
+PCI: Bus Dev VenId DevId Class Int
+PCIE1: link is not up.
+DTT: 1 is 32 C
+Net: ppc_4xx_eth0, ppc_4xx_eth1
+Type run flash_nfs to mount root filesystem over NFS
+Hit any key to stop autoboot: 0
+=> version
+
+$ sudo apt-get install u-boot-tools
+$ sudo yum install uboot-tools
+
+=> help tftpboot
+tftpboot - boot image via network using TFTP protocol
+Usage:
+tftpboot [loadAddress] [[hostIPaddr:]bootfilename]
+=> help setenv printenv
+setenv - set environment variables
+
+Usage:
+setenv name value ...
+- set environment variable 'name' to 'value ...'
+setenv name
+- delete environment variable 'name'
+printenv - print environment variables
+Usage:
+printenv
+- print values of all environment variables
+printenv name ...
+- print value of environment variable 'name'
+=>
+
+=> help fli tftp
+flinfo - print FLASH memory information
+Usage:
+flinfo
+- print information for all FLASH memory banks
+flinfo N
+- print information for FLASH memory bank # N
+tftpboot - boot image via network using TFTP protocol
+Usage:
+tftpboot [loadAddress] [[hostIPaddr:]bootfilename]
+=>
+
+=> reset
+U-Boot 2009.11.1 (Feb 05 2010 - 08:57:12)
+CPU: AMCC PowerPC 460EX Rev. B at 1066.667 MHz (PLB=266 OPB=88 EBC=88)
+Security/Kasumi support
+Bootstrap Option H - Boot ROM Location I2C (Addr 0x52)
+Internal PCI arbiter enabled
+32 kB I-Cache 32 kB D-Cache
+Board: Canyonlands - AMCC PPC460EX Evaluation Board, 1*PCIe/1*SATA, Rev. 16
+I2C: ready
+DRAM: 512 MB (ECC not enabled, 533 MHz, CL4)
+FLASH: 64 MB
+NAND: 128 MiB
+PCI: Bus Dev VenId DevId Class Int
+PCIE1: link is not up.
+DTT: 1 is 32 C
+Net: ppc_4xx_eth0, ppc_4xx_eth1
+Type run flash_nfs to mount root filesystem over NFS
+Hit any key to stop autoboot: 0
+=>
+=> setenv ethaddr !!!!!!FILL_THIS!!!!!!
+=> setenv serial# 86BA-5AA1-BD9
+Use the printenv command to verify that you have entered the correct values:
+=> printenv serial# ethaddr
+## Error: "serial#" not defined
+ethaddr=00:10:ec:01:08:84
+=>
+=> saveenv
+Saving Environment to Flash...
+Un-Protected 1 sectors
+Un-Protected 1 sectors
+Erasing Flash...
+. done
+Erased 1 sectors
+Writing to Flash... done
+Protected 1 sectors
+Protected 1 sectors
+=>
