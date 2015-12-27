@@ -1,0 +1,65 @@
+=> fli
+Bank # 1: CFI conformant FLASH (16 x 16) Size: 64 MB in 512 Sectors AMD Standard command set, Manufacturer ID: 0x01, Device ID: 0x227E
+Erase timeout: 16384 ms, write timeout: 2 ms
+Buffer write timeout: 5 ms, buffer size: 32 bytes
+Sector Start Addresses:
+FC000000 FC020000 FC040000 FC060000 FC080000
+FC0A0000 FC0C0000 FC0E0000 FC100000 FC120000
+FC140000 FC160000 FC180000 FC1A0000 FC1C0000 E
+FC1E0000 FC200000 FC220000 FC240000 FC260000
+FC280000 FC2A0000 FC2C0000 FC2E0000 FC300000
+FC320000 FC340000 FC360000 FC380000 FC3A0000
+
+=> help era
+erase - erase FLASH memory
+Usage:
+erase start end
+- erase FLASH from addr 'start' to addr 'end'
+erase start +len
+- erase FLASH from addr 'start' to the end of sect w/addr 'start'+'len'-1
+erase N:SF[-SL]
+- erase sectors SF-SL in FLASH bank # N
+erase bank N
+- erase FLASH bank # N
+erase all
+- erase all FLASH banks
+=>
+
+=> era 0xFF900000 0xFF95FFFF
+... done
+Erased 3 sectors
+=>
+
+=> era 1:455-456
+Erase Flash Sectors 455-456 in Bank # 1
+.. done
+=>
+
+=> era bank 1
+Erase Flash Bank # 1 - Warning: 5 protected sectors will not be erased!
+...............................................................................................................................=>
+
+=> era all
+Erase Flash Bank # 1 - Warning: 5 protected sectors will not be erased!
+...............................................................................................................................=>
+
+=> help bootm
+bootm - boot application image from memory
+Usage:
+bootm [addr [arg ...]]
+start [addr [arg ...]]
+loados - load OS image
+ramdisk - relocate initrd, set env initrd_start/initrd_end
+fdt - relocate flat device tree
+cmdline - OS specific command line processing/setup
+bdt - OS specific bd_t processing
+prep - OS specific prep before relocation or go
+go - start OS
+=>
+
+=> bootm ${kernel_addr} - ${fdt_addr}
+=> bootm ${kernel_addr} ${ramdisk_addr} ${fdt_addr}
+
+=> setenv initrd_high 00c00000
+=> setenv bootargs ${bootargs} mem=\${mem}
+=> saveenv
