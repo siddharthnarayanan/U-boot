@@ -1,3 +1,0 @@
-git clone git://git.denx.de/u-boot.git u-boot/
-git clone http://git.denx.de/u-boot.git u-boot/
-git clone rsync://git.denx.de/u-boot.git u-boot/

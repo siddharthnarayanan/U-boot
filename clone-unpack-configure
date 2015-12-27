@@ -1,0 +1,23 @@
+git clone git://git.denx.de/u-boot.git u-boot/
+git clone http://git.denx.de/u-boot.git u-boot/
+git clone rsync://git.denx.de/u-boot.git u-boot/
+
+$ cd /opt/eldk/usr/src
+$ wget ftp://ftp.denx.de/pub/u-boot/u-boot-1.3.2.tar.bz2
+$ rm -f u-boot
+$ bunzip2 < u-boot-1.3.2.tar.bz2 | tar xf -
+$ ln -s u-boot-1.3.2 u-boot
+$ cd u-boot
+
+$ make distclean
+$ make canyonlands_config
+$ make all
+
+make O=/tmp/build distclean
+make O=/tmp/build canyonlands_config
+make O=/tmp/build all
+
+export BUILD_DIR=/tmp/build
+make distclean
+make canyonlands_config
+make all
