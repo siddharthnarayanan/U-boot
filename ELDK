@@ -1,0 +1,49 @@
+bash$ ncftp ftp.sunet.se
+...
+ncftp / > cd /pub/Linux/distributions/eldk/4.2
+ncftp /pub/Linux/distributions/eldk/4.2 > bin
+ncftp /pub/Linux/distributions/eldk/4.2 > get -R ppc-linux-x86/distribution
+...
+ncftp /pub/Linux/distributions/eldk/4.2 > bye
+
+If you don't find the ncftp tool on your system you can download the NcFTP client from http://www.ncftp.com/download/ There are a few executable files (binaries and scripts) in the ELDK tree. Make sure they have the execute permissions set in your local copy:
+
+bash$ for file in \
+> tools/bin/rpm \
+> tools/usr/lib/rpm/rpmd \
+> install \
+> ELDK_MAKEDEV \
+> ELDK_FIXOWNER
+> do
+> chmod +x ppc-linux-x86/distribution/$file
+> done
+
+bash$ mkisofs \
+> -A "ELDK-4.2 -- Target: PowerPC -- Host: x86 Linux" \
+> -publisher "(C) `date "+%Y"` DENX Software Engineering, www.denx.de" \
+> -p "`id -nu`@`hostname` -- `date`" \
+> -V ppc-linux-x86 \
+> -l -J -R -o eldk-ppc-linux-x86.iso ppc-linux-x86/distribution
+
+bash$ ${CROSS_COMPILE}rpm -qa
+bash$ ${CROSS_COMPILE}rpm -e <package_name>
+bash$ ${CROSS_COMPILE}rpm -i <package_file_name>
+bash$ ${CROSS_COMPILE}rpm -U <package_file_name>
+
+
+# cd /opt/eldk
+# /mnt/cdrom/ELDK_FIXOWNER
+# cd /opt/eldk
+# /mnt/cdrom/ELDK_FIXOWNER -a ppc_8xx
+
+$ ${CROSS_COMPILE}rpm -i /mnt/cdrom/SRPMS/<source_rpm_file_name>.src.rpm
+bash$ ${CROSS_COMPILE}rpm -iv <package_name>.src.rpm
+bash$ ${CROSS_COMPILE}rpmbuild -ba <package_name>.spec
+bash$ ${CROSS_COMPILE}rpm -i <package_name>.rpm
+
+
+$ unset CROSS_COMPILE
+$ <ELDK_root>/usr/bin/rpmbuild -ba <package_name.spec>
+bash$ <ELDK_root>/bin/rpm -i <package_name>.rpm
+
+
