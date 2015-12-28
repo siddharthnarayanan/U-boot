@@ -1,0 +1,67 @@
+serial8250.0: ttyS2 at MMIO 0x4ef600500 (irq = 29) is a 16550A
+serial8250.0: ttyS3 at MMIO 0x4ef600600 (irq = 21) is a 16550A
+4ef600300.serial: ttyS0 at MMIO 0x4ef600300 (irq = 19) is a 16550
+4ef600400.serial: ttyS1 at MMIO 0x4ef600400 (irq = 20) is a 16550
+4ef600500.serial: ttyS2 at MMIO 0x4ef600500 (irq = 29) is a 16550
+4ef600600.serial: ttyS3 at MMIO 0x4ef600600 (irq = 21) is a 16550
+brd: module loaded
+sata-dwc sata-dwc.0: id 0, controller version 1.82
+sata-dwc sata-dwc.0: DMA initialized
+sata-dwc sata-dwc.0: **** No neg speed (nothing attached?)
+scsi0 : sata-dwc
+ata1: SATA max UDMA/133 irq 23
+4cc000000.nor_flash: Found 1 x16 devices at 0x0 in 16-bit bank
+Amd/Fujitsu Extended Query Table at 0x0040
+4cc000000.nor_flash: CFI does not contain boot bank location. Assuming top.
+number of CFI chips: 1
+cfi_cmdset_0002: Disabling erase-suspend-program due to code brokenness.
+RedBoot partition parsing not available
+Creating 7 MTD partitions on "4cc000000.nor_flash":
+0x000000000000-0x0000001e0000 : "kernel"
+0x0000001e0000-0x000000200000 : "dtb"
+0x000000200000-0x000001600000 : "ramdisk"
+0x000001600000-0x000001a00000 : "jffs2"
+0x000001a00000-0x000003f60000 : "user"
+0x000003f60000-0x000003fa0000 : "env"
+0x000003fa0000-0x000004000000 : "u-boot"
+NAND device: Manufacturer ID: 0x20, Chip ID: 0xf1 (ST Micro NAND 128MiB 3,3V 8-bit)
+Scanning device for bad blocks
+Creating 2 MTD partitions on "4e0000000.ndfc.nand":
+0x000000000000-0x000000100000 : "u-boot"
+0x000000000000-0x000003f00000 : "user"
+e1000e: Intel(R) PRO/1000 Network Driver - 1.0.2-k2
+e1000e: Copyright (c) 1999-2008 Intel Corporation.
+PPC 4xx OCP EMAC driver, version 3.54
+MAL v2 /plb/mcmal, 2 TX channels, 16 RX channels
+ZMII /plb/opb/emac-zmii@ef600d00 initialized
+RGMII /plb/opb/emac-rgmii@ef601500 initialized with MDIO support
+TAH /plb/opb/emac-tah@ef601350 initialized
+TAH /plb/opb/emac-tah@ef601450 initialized
+/plb/opb/emac-rgmii@ef601500: input 0 in RGMII mode
+eth0: EMAC-0 /plb/opb/ethernet@ef600e00, MAC 00:10:ec:01:08:84
+eth0: found Generic MII PHY (0x00)
+/plb/opb/emac-rgmii@ef601500: input 1 in RGMII mode
+eth1: EMAC-1 /plb/opb/ethernet@ef600f00, MAC 00:10:ec:81:08:84
+eth1: found Generic MII PHY (0x01)
+ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+ppc-of-ehci 4bffd0400.ehci: OF EHCI
+ppc-of-ehci 4bffd0400.ehci: new USB bus registered, assigned bus number 1
+ppc-of-ehci 4bffd0400.ehci: irq 38, io mem 0x4bffd0400
+ppc-of-ehci 4bffd0400.ehci: USB 2.0 started, EHCI 1.00
+usb usb1: New USB device found, idVendor=1d6b, idProduct=0002
+usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+usb usb1: Product: OF EHCI
+usb usb1: Manufacturer: Linux 2.6.32.7-00007-g08eba26 ehci_hcd
+usb usb1: SerialNumber: PPC-OF USB
+usb usb1: configuration #1 chosen from 1 choice
+hub 1-0:1.0: USB hub found
+hub 1-0:1.0: 1 port detected
+ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+ppc-of-ohci 4bffd0000.usb: OF OHCI
+ppc-of-ohci 4bffd0000.usb: new USB bus registered, assigned bus number 2
+ppc-of-ohci 4bffd0000.usb: irq 39, io mem 0x4bffd0000
+usb usb2: New USB device found, idVendor=1d6b, idProduct=0001
+usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+usb usb2: Product: OF OHCI
+usb usb2: Manufacturer: Linux 2.6.32.7-00007-g08eba26 ohci_hcd
+usb usb2: SerialNumber: PPC-OF USB
