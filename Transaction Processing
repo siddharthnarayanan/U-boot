@@ -1,0 +1,40 @@
+#!/usr/local/bin/kermit +
+  Verify command-line parameter - source file(s) or directory;
+  if not defined \%1 exit 1 Usage: \%0 filespec or directory name
+  if defined \%2 {
+      echo "Fatal - Multiple arguments not supported."
+      echo " You may give a single argument that is a filename,"
+      echo " or a wildcard to match multiple files, or the name"
+      echo " of a directory.  If you give a directory name, all"
+      echo " files will be sent from that directory."
+      exit 1
+  }
+  .filespec := \fcontents(\%1)
+  if directory \m(filespec) {
+lcd \m(filespec)
+      if fail exit 1 - LCD \m(filespec) failed
+      .filespec := *
+  }
+  if not \ffiles(\m(filespec)) exit 1 \m(filespec): No files match;
+  Prompt for server password (OR USE SECURE FTP IF AVAILABLE!);
+  undefine \%p
+  while not defined \%p {
+      askq \%p Password:
+  }
+  Open the connection and log in
+  ftp open centralsite.com /user:clientid /password:\%p
+  if fail exit 1 Connection failed
+  if not \v(ftp_loggedin) exit 1 Login failed
+  undefine \%p
+  Make sure Ready directory is empty
+  ftp check ready/*
+  if success exit 1 Ready directory is not empty
+  OK to send - cd to server's working directory.
+  ftp cd working
+  if fail exit 1 ftp cd working: \v(ftp_message)
+  Now we upload the files, deleting each local copy and moving each
+  uploaded copy when successful.
+  ftp mput /delete /server-rename:../ready/\v(filename) \m(filespec)
+  if fail exit 1 ftp mput \m(filespec): \v(ftp_message)
+  bye
+  exit 0
