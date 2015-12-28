@@ -1,0 +1,68 @@
+* 0xfffef000..0xfffff000 : fixmap
+* 0xffc00000..0xffe00000 : highmem PTEs
+* 0xffa00000..0xffc00000 : consistent mem
+* 0xffa00000..0xffa00000 : early ioremap
+* 0xe1000000..0xffa00000 : vmalloc & ioremap
+SLUB: Genslabs=11, HWalign=32, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+Hierarchical RCU implementation.
+NR_IRQS:512
+UIC0 (32 IRQ sources) at DCR 0xc0
+UIC1 (32 IRQ sources) at DCR 0xd0
+UIC2 (32 IRQ sources) at DCR 0xe0
+UIC3 (32 IRQ sources) at DCR 0xf0
+clocksource: timebase mult[3c0000] shift[22] registered
+Mount-cache hash table entries: 512
+NET: Registered protocol family 16
+256k L2-cache enabled
+PCIE0: Port disabled via device-tree
+PCIE1: Checking link...
+PCIE1: No device detected.
+PCI host bridge /plb/pciex@d20000000 (primary) ranges:
+MEM 0x0000000e80000000..0x0000000effffffff -> 0x0000000080000000
+MEM 0x0000000f00100000..0x0000000f001fffff -> 0x0000000000000000
+IO 0x0000000f80010000..0x0000000f8001ffff -> 0x0000000000000000
+Removing ISA hole at 0x0000000f00100000
+4xx PCI DMA offset set to 0x00000000
+/plb/pciex@d20000000: Legacy ISA memory support enabled
+PCIE1: successfully set as root-complex
+PCI host bridge /plb/pci@c0ec00000 (primary) ranges:
+MEM 0x0000000d80000000..0x0000000dffffffff -> 0x0000000080000000
+MEM 0x0000000c0ee00000..0x0000000c0eefffff -> 0x0000000000000000
+IO 0x0000000c08000000..0x0000000c0800ffff -> 0x0000000000000000
+Removing ISA hole at 0x0000000c0ee00000
+4xx PCI DMA offset set to 0x00000000
+/plb/pci@c0ec00000: Legacy ISA memory support enabled
+PCI: Probing PCI hardware
+PCI: Hiding 4xx host bridge resources 0000:80:00.0
+pci 0000:80:00.0: PCI bridge, secondary bus 0000:81
+pci 0000:80:00.0: IO window: disabled
+pci 0000:80:00.0: MEM window: disabled
+pci 0000:80:00.0: PREFETCH window: disabled
+bio: create slab <bio-0> at 0
+vgaarb: loaded
+SCSI subsystem initialized
+usbcore: registered new interface driver usbfs
+usbcore: registered new interface driver hub
+usbcore: registered new device driver usb
+Switching to clocksource timebase
+NET: Registered protocol family 2
+IP route cache hash table entries: 4096 (order: 2, 16384 bytes)
+TCP established hash table entries: 16384 (order: 5, 131072 bytes)
+TCP bind hash table entries: 16384 (order: 4, 65536 bytes)
+TCP: Hash tables configured (established 16384 bind 16384)
+TCP reno registered
+NET: Registered protocol family 1
+RPC: Registered udp transport module.
+RPC: Registered tcp transport module.
+RPC: Registered tcp NFSv4.1 backchannel transport module.
+JFFS2 version 2.2. (NAND) Â© 2001-2006 Red Hat, Inc.
+msgmni has been set to 1006
+io scheduler noop registered
+io scheduler anticipatory registered (default)
+io scheduler deadline registered
+io scheduler cfq registered
+Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+serial8250.0: ttyS0 at MMIO 0x4ef600300 (irq = 19) is a 16550A
+console [ttyS0] enabled
+serial8250.0: ttyS1 at MMIO 0x4ef600400 (irq = 20) is a 16550A
+
