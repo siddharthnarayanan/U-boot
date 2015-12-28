@@ -1,0 +1,16 @@
+//script to accept a host and a filename from the command line
+#!/usr/local/bin/kermit +
+  if < \v(argc) 3 exit 1 Usage: \%0 host file
+  ftp open \%1 /anonymous
+  if fail exit 1 \%1: Connection failed
+  if not \v(ftp_loggedin) exit 1 Login failed
+  lcd ~/download
+  if fail exit 1 cd ~/download: \v(errstring)
+  ftp get /binary \%2:
+  if fail exit 1 ftp get \%2: \v(ftp_message)
+  ftp bye
+  exit
+
+
+  getfile support.scsicorp.com drivers/scsidrivers.zip
+  getfile ftp.kermitproject.org kermit/archives/ckermit.tar.gz
