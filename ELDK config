@@ -1,0 +1,36 @@
+$ rpm -q uucp
+
+#
+# /dev/ttyS0 at 115200 bps:
+#
+system S0@115200
+port serial0_115200
+time any
+    /etc/uucp/port:
+#
+# /dev/ttyS0 at 115200 bps:
+#
+port serial0_115200
+type direct
+device /dev/ttyS0
+speed 115200
+hardflow false
+
+$ cu S0@115200
+
+set line /dev/ttyS0
+set speed 115200
+set carrier-watch off
+set handshake none
+set flow-control none
+robust
+set file type bin
+set file name lit
+set rec pack 1000
+set send pack 1000
+set window 5
+
+$ kermit -c
+Connecting to /dev/ttyS0, speed 115200.
+
+
