@@ -1,0 +1,48 @@
+=> setenv fdt_file /tftpboot/duts/canyonlands/canyonlands.dtb
+=> setenv bootfile /tftpboot/duts/canyonlands/uImage
+=> setenv rootpath /opt/eldk-4.2/ppc_4xxFP/
+=> printenv net_nfs
+net_nfs=tftp ${kernel_addr_r} ${bootfile}; tftp ${fdt_addr_r} ${fdt_file}; run nfsargs addip addtty => run net_nfs
+Using ppc_4xx_eth0 device
+TFTP from server 192.168.1.1; our IP address is 192.168.100.6
+Filename '/tftpboot/duts/canyonlands/uImage'.
+Load address: 0x400000
+Loading: #################################################################
+#################################################################
+####	
+done
+Bytes transferred = 1958609 (1de2d1 hex)
+Using ppc_4xx_eth0 device
+TFTP from server 192.168.1.1; our IP address is 192.168.100.6
+Filename '/tftpboot/duts/canyonlands/canyonlands.dtb'.
+Load address: 0xb00000
+Loading: #
+done
+Bytes transferred = 10190 (27ce hex)
+## Booting kernel from Legacy Image at 00400000 ...
+Image Name: Linux-2.6.32.7-00007-g08eba26
+Created: 2010-02-04 17:54:22 UTC
+Image Type: PowerPC Linux Kernel Image (gzip compressed)
+Data Size: 1958545 Bytes = 1.9 MB
+Load Address: 00000000
+Entry Point: 00000000
+Verifying Checksum ... OK
+## Flattened Device Tree blob at 00b00000
+Booting using the fdt blob at 0xb00000
+Uncompressing Kernel Image ... OK
+Using PowerPC 44x Platform machine description
+Linux version 2.6.32.7-00007-g08eba26 (stefan@stefan-desktop) (gcc version 4.2.2) #1 Thu Feb 4 18:Zone PFN ranges:
+DMA 0x00000000 -> 0x00020000
+Normal 0x00020000 -> 0x00020000
+HighMem 0x00020000 -> 0x00020000
+Movable zone start PFN for each node
+early_node_map[1] active PFN ranges
+0: 0x00000000 -> 0x00020000
+MMU: Allocated 1088 bytes of context maps for 255 contexts
+Built 1 zonelists in Zone order, mobility grouping on. Total pages: 130048
+Kernel command line: root=/dev/nfs rw nfsroot=192.168.1.1:/opt/eldk-4.2/ppc_4xxFP/ ip=192.168.100.6:PID hash table entries: 2048 (order: 1, 8192 bytes)
+Dentry cache hash table entries: 65536 (order: 6, 262144 bytes)
+Inode-cache hash table entries: 32768 (order: 5, 131072 bytes)
+Memory: 515328k/524288k available (3880k kernel code, 8740k reserved, 172k data, 134k bss, 168k init)
+Kernel virtual memory layout:
+
