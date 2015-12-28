@@ -214,3 +214,53 @@ return -ENXIO;
 }
 
 
+return -ENXIO; 
+} 
+ret = musb_gadget_start(&gadget->g, driver); 
+if (ret < 0) {
+
+ printf("gadget_start failed with %d\n", ret); 
+return ret; 
+} 
+
+ret = driver->bind(&gadget->g); 
+if (ret < 0) { 
+printf("bind failed with %d\n", ret); 
+return ret; 
+}
+return 0; 
+} 
+
+int usb_gadget_unregister_driver(struct usb_gadget_driver *driver) 
+{ 
+/* TODO: implement me */ 
+return 0; 
+}
+ #endif /* CONFIG_MUSB_GADGET */ 
+
+int musb_register(struct musb_hdrc_platform_data *plat, void *bdata, void *ctl_regs) 
+{
+struct musb **musbp; 
+
+switch (plat-mode) {
+ #ifdef CONFIG_MUSB_HOST
+ case MUSB_HOST: 
+musbp = &host; 
+break; 
+#endif
+#ifdef CONFIG_MUSB_GADGET 
+case MUSB_PERIPHERAL: 
+musbp = &gadget; 
+break;
+ #endif 
+
+default: return -EINVAL; 
+} 
+
+*musbp = musb_init_controller(plat, (struct device *)bdata, ctl_regs);
+ if (!musbp) { 
+printf("Failed to init the controller\n");
+ return -EIO; 
+} 
+return 0; 
+}
